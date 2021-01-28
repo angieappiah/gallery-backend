@@ -1,0 +1,7 @@
+Gallery
+has_many :pieces
+Attribute: style - string
+
+Pieces
+belongs_to :Gallery
+Attribute: photos-img,name-string,description-string, gallery_id-integer
