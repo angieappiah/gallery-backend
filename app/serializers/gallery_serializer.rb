@@ -1,3 +1,4 @@
 class GallerySerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :style
+  has_many :pieces
 end

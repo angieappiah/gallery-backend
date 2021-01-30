@@ -1,17 +1,13 @@
 class Api::V1::GalleriesController < ApplicationController
+   
     def index
         @galleries = Gallery.all
         render json: @galleries
     end
 
     def create
-        @gallery = Gallery.new(gallery_params)
-        if @gallery.save
-            render json: @gallery
-        else
-            render json: {error: 'unable to create'}
-        end
-    end
+        @gallery= @gallery.new(galary_params)
+        render json: @gallery
     end
 
     def show

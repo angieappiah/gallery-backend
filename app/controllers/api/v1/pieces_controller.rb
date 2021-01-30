@@ -14,7 +14,6 @@ class Api::V1::PiecesController < ApplicationController
     def create
         @piece = @gallery.piece.new(piece_params)
         render json: @piece
-
     end
 
     # def delete
