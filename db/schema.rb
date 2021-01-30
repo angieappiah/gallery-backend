@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_233518) do
+ActiveRecord::Schema.define(version: 2021_01_29_221550) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "galleries", force: :cascade do |t|
     t.string "style"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "artist_id"
   end
 
   create_table "pieces", force: :cascade do |t|
@@ -25,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_233518) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "artist_id"
   end
 
 end
