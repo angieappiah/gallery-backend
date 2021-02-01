@@ -12,8 +12,13 @@ class Api::V1::PiecesController < ApplicationController
     end
 
     def create
-        @piece = @gallery.piece.new(piece_params)
+        @piece = @gallery.pieces.new(piece_params)
+        if @piece.save
         render json: @piece
+        else
+            render json: {error: 'unable to create'}
+     
+        end
     end
 
     # def delete

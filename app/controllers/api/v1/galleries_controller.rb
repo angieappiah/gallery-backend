@@ -6,9 +6,14 @@ class Api::V1::GalleriesController < ApplicationController
     end
 
     def create
-        @gallery= @gallery.new(galary_params)
-        render json: @gallery
+        @gallery = Gallery.new(gallery_params)
+        if @gallery.save
+            render json: @gallery
+        else
+            render json: {error: 'unable to create'}
+        end
     end
+   
 
     def show
         @gallery = Gallery.find(params[:id])

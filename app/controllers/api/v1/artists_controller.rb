@@ -5,7 +5,12 @@ class ArtistsController < ApplicationController
     end
 
     def create
-        @artist = Artist.create(artist_params)
+        @artist = Artist.new(artist_params)
+        if@artist.save
+            render json: @artist
+        else
+            render json: {error: 'unable to create'}
+        end
     end
 
     def show
