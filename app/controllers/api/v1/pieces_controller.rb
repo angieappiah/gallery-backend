@@ -14,6 +14,8 @@ class Api::V1::PiecesController < ApplicationController
     def create
         @piece = @gallery.pieces.new(piece_params)
         if @piece.save
+            @piece.image.purge
+            @piece.image.attach(params[:piece][:image])
         render json: @piece
         else
             render json: {error: 'unable to create'}
@@ -33,7 +35,7 @@ class Api::V1::PiecesController < ApplicationController
     end
 
    def piece_params
-    params.require(:piece).permit(:name, :description, :gallery_id, :url)
+    params.require(:piece).permit(:name, :description, :gallery_id, :image)
    end
 
 end
