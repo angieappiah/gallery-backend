@@ -16,7 +16,7 @@ class Api::V1::GalleriesController < ApplicationController
    
 
     def show
-        @gallery = Gallery.find(params[:id])
+        #@gallery = Gallery.find(params[:id])
         render json: @gallery
     end
 
