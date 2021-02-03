@@ -6,6 +6,7 @@ class Api::V1::GalleriesController < ApplicationController
     end
 
     def create
+        #binding.pry
         @gallery = Gallery.new(gallery_params)
         if @gallery.save
             render json: @gallery
