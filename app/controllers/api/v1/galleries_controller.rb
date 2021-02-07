@@ -21,7 +21,7 @@ class Api::V1::GalleriesController < ApplicationController
         render json: @gallery
     end
 
-    def delete
+    def destroy
         @gallery = Gallery.find(params[:id])
         @gallery.destroy
     end

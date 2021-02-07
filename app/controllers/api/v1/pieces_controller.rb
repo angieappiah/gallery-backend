@@ -17,10 +17,11 @@ class Api::V1::PiecesController < ApplicationController
         render json: @gallery
     end
 
-    def delete
-        @piece = Piece.find(params[:id])
-        gallery = Gallery.find(piece.gallery_id)
+    def destroy
+        @piece = Piece.find(params["id"])
+        @gallery = Gallery.find(@piece.gallery_id)
         @piece.destroy
+        render json: @gallery
     end
 
     private
