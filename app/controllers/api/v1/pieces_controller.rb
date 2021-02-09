@@ -6,7 +6,6 @@ class Api::V1::PiecesController < ApplicationController
     end
 
     def show
-        #@piecie = @gallery.piece.find(params[:id])
         @piece = Piece.find(params[:id]) 
         render json: @piece
     end
@@ -16,6 +15,16 @@ class Api::V1::PiecesController < ApplicationController
          @piece.save
         render json: @gallery
     end
+
+   def update
+        params[:featured_image]
+        @piece.featured_image.attach(params[:featured_image])
+        url= url_for(@piece.featured_image)
+        if @piece.update(url: url)
+            render json: @piece, status: :ok
+        end
+   end
+
 
     def destroy
         @piece = Piece.find(params["id"])
@@ -32,7 +41,7 @@ class Api::V1::PiecesController < ApplicationController
     end
 
    def piece_params
-    params.require(:piece).permit(:name, :description, :gallery_id, :featured_image)
+    params.require(:piece).permit(:name, :description, :gallery_id, :url, :featured_image)
    end
 
 end
