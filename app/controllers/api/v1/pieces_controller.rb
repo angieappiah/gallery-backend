@@ -16,14 +16,14 @@ class Api::V1::PiecesController < ApplicationController
         render json: @gallery
     end
 
-   def update
-        params[:featured_image]
-        @piece.featured_image.attach(params[:featured_image])
-        url= url_for(@piece.featured_image)
-        if @piece.update(url: url)
-            render json: @piece, status: :ok
-        end
-   end
+#    def update
+#         params[:featured_image]
+#         @piece.featured_image.attach(params[:featured_image])
+#         url= url_for(@piece.featured_image)
+#         if @piece.update(url: url)
+#             render json: @piece, status: :ok
+#         end
+#    end
 
 
     def destroy
