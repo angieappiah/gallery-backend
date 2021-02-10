@@ -18,6 +18,13 @@ class Api::V1::GalleriesController < ApplicationController
         render json: @gallery
     end
 
+     def Update
+        @gallery = Gallery.find(params[:id])
+        @gallery.Update(gallery)
+        @gallery.save
+
+     end
+
     def destroy
         @gallery = Gallery.find(params[:id])
         @gallery.destroy
