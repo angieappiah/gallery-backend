@@ -29,8 +29,11 @@ class Api::V1::PiecesController < ApplicationController
     def destroy
         @piece = Piece.find(params["id"])
         @gallery = Gallery.find(@piece.gallery_id)
-        @piece.destroy
+       if @piece.destroy
         render json: @gallery
+       else
+        render json:{error: 'cannot delete this piece'}
+       end
     end
 
     private
