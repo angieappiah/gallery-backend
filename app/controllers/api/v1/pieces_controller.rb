@@ -1,7 +1,7 @@
 class Api::V1::PiecesController < ApplicationController
     before_action :set_gallery
     def index
-        @piecies = @gallery.pieces
+        @piecies = Piece.all
         render json: @piecies
     end
 
@@ -41,7 +41,7 @@ class Api::V1::PiecesController < ApplicationController
     end
 
    def piece_params
-    params.require(:piece).permit(:name, :description, :gallery_id, :url, :featured_image)
+    params.require(:piece).permit(:name, :description, :gallery_id)
    end
 
 end
