@@ -1,14 +1,10 @@
 class Api::V1::PiecesController < ApplicationController
     before_action :set_gallery
     def index
-        @piecies = Piece.all
+        @piecies = @gallery.pieces.all
         render json: @piecies
     end
 
-    def show
-        @piece = Piece.find(params[:id]) 
-        render json: @piece
-    end
 
     def create
         @piece = @gallery.pieces.new(piece_params)
@@ -16,14 +12,10 @@ class Api::V1::PiecesController < ApplicationController
         render json: @gallery
     end
 
-#    def update
-#         params[:featured_image]
-#         @piece.featured_image.attach(params[:featured_image])
-#         url= url_for(@piece.featured_image)
-#         if @piece.update(url: url)
-#             render json: @piece, status: :ok
-#         end
-#    end
+    def show
+        @piece = Piece.find(params[:id]) 
+        render json: @piece
+    end
 
 
     def destroy

@@ -8,27 +8,29 @@ class Api::V1::GalleriesController < ApplicationController
     def create
         #binding.pry
         @gallery = Gallery.new(gallery_params)
-        @gallery.save
-        render json: @gallery      
+        if @gallery.save
+        render json: @gallery 
+        else
+            render json: {error: 'Error occurred'}   
+        end  
     end
-   
 
     def show
         @gallery = Gallery.find(params[:id])
         render json: @gallery
     end
 
-     def Update
+    def destroy
+        @gallery = Gallery.find(params[:id])
+        @gallery.destroy
+    end
+
+    def Update
         @gallery = Gallery.find(params[:id])
         @gallery.Update(gallery)
         @gallery.save
 
      end
-
-    def destroy
-        @gallery = Gallery.find(params[:id])
-        @gallery.destroy
-    end
 
     private
 
