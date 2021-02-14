@@ -27,9 +27,9 @@ class Api::V1::GalleriesController < ApplicationController
 
     def Update
         @gallery = Gallery.find(params[:id])
-        @gallery.Update(gallery)
+        @gallery.Update(style: params["gallery"]["style"])
         @gallery.save
-
+        render json: @gallery
      end
 
     private
