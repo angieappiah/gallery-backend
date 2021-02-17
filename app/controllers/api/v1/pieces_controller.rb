@@ -19,10 +19,8 @@ class Api::V1::PiecesController < ApplicationController
 
     def Update
         @piece = Piece.find(id: params["id"])
-        byebug
         @piece.update(likes: params["piece"]["likes"])
         render json: @piece
-
     end
 
 
