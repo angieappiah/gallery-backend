@@ -1,6 +1,6 @@
 class PieceSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :name, :description, :gallery_id
+  attributes :id, :name, :description, :likes, :gallery_id
   # def featured_image
   #   if object.featured_image.attached?
   #     {

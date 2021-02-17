@@ -30,7 +30,7 @@ class Api::V1::GalleriesController < ApplicationController
         @gallery.Update(style: params["gallery"]["style"])
         @gallery.save
         render json: @gallery
-     end
+    end
 
     private
 

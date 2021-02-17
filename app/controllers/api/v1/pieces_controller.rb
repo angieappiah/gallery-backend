@@ -17,6 +17,14 @@ class Api::V1::PiecesController < ApplicationController
         render json: @piece
     end
 
+    def Update
+        @piece = Piece.find(id: params["id"])
+        byebug
+        @piece.update(likes: params["piece"]["likes"])
+        render json: @piece
+
+    end
+
 
     def destroy
         @piece = Piece.find(params["id"])
@@ -36,7 +44,7 @@ class Api::V1::PiecesController < ApplicationController
     end
 
    def piece_params
-    params.require(:piece).permit(:name, :description, :gallery_id)
+    params.require(:piece).permit(:name, :description, :likes, :gallery_id)
    end
 
 end
