@@ -18,6 +18,7 @@ class Api::V1::PiecesController < ApplicationController
     end
 
     def Update
+        binding.pry
         @piece = Piece.find(id: params["id"])
         @piece.Update(style: params["piece"]["likes"])
         @piece.save
