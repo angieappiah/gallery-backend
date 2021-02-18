@@ -19,8 +19,9 @@ class Api::V1::PiecesController < ApplicationController
 
     def Update
         @piece = Piece.find(id: params["id"])
-        @piece.update(likes: params["piece"]["likes"])
-        render json: @piece
+        @piece.Update(style: params["piece"]["likes"])
+        @piece.save
+        render json: @gallery
     end
 
 
