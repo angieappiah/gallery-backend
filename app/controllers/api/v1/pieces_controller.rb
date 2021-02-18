@@ -20,7 +20,7 @@ class Api::V1::PiecesController < ApplicationController
     def Update
         binding.pry
         @piece = Piece.find(id: params["id"])
-        @piece.Update(style: params["piece"]["likes"])
+        @piece.Update(piece_params)
         @piece.save
         render json: @gallery
     end
