@@ -3,7 +3,7 @@ class Api::V1::GalleriesController < ApplicationController
     def index
         @galleries = Gallery.all
         render json: @galleries
-    end
+    end  #GET
 
     def create
         #binding.pry
@@ -20,16 +20,16 @@ class Api::V1::GalleriesController < ApplicationController
         render json: @gallery
     end
 
-    def destroy
-        @gallery = Gallery.find(params[:id])
-        @gallery.destroy
-    end
-
     def Update
         @gallery = Gallery.find(params[:id])
         @gallery.Update(style: params["gallery"]["style"])
         @gallery.save
         render json: @gallery
+    end
+
+    def destroy
+        @gallery = Gallery.find(params[:id])
+        @gallery.destroy
     end
 
     private
