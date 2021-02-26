@@ -12,5 +12,3 @@ piece_a = Piece.create(gallery_id: 2, name: 'Akuaba doll', likes: 4, description
 
 
 
-
-#create one user current_user
