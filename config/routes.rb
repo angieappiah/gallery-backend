@@ -6,7 +6,6 @@ Rails.application.routes.draw do
       resources :pieces
       end
       resources :pieces
-      resources :galleries
     end
   end
 

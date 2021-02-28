@@ -21,16 +21,12 @@ class Api::V1::PiecesController < ApplicationController
     end
 
     def update
+        #byebug
         @piece = Piece.find(params["id"])
-       @piece.assign_attributes(piece_params)
-       if @piece.valid?
-        @piece.save
-        render json: @piece
-    else
-        render json: { message:@piece.errors}
-        end
+        @gallery = Gallery.find(@piece.gallery_id)
+        @piece.assign_attributes(piece_params)
+        render json: @gallery
     end
-
 
     def destroy
         @piece = Piece.find(params["id"])
