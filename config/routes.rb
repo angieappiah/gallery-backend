@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :pieces
       resources :galleries do
       resources :pieces
       end
+      resources :pieces
       resources :galleries
     end
   end

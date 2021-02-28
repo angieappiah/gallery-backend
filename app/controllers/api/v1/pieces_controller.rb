@@ -1,6 +1,6 @@
 class Api::V1::PiecesController < ApplicationController
     before_action :set_gallery
-    before_action :set_piece
+   
     def index
         @piecies = @gallery.pieces.all
         render json: @piecies
@@ -21,9 +21,15 @@ class Api::V1::PiecesController < ApplicationController
     end
 
     def update
-        @piece = Api::V1::Pieces.find_by_id(params[:id])
-        @piece.update
-     end
+        @piece = Piece.find(params["id"])
+       @piece.assign_attributes(piece_params)
+       if @piece.valid?
+        @piece.save
+        render json: @piece
+    else
+        render json: { message:@piece.errors}
+        end
+    end
 
 
     def destroy
@@ -42,12 +48,9 @@ class Api::V1::PiecesController < ApplicationController
         @gallery = Gallery.find_by(id:params[:gallery_id])
     end
 
-    def set_piece
-        @piece = Piece.find(params[:id])
-    end
 
    def piece_params
-    params.require(:piece).permit(:id, :name, :description, :likes, :gallery_id)
+    params.require(:piece).permit(:name, :description, :likes, :gallery_id)
    end
 
 end
