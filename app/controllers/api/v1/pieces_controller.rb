@@ -24,7 +24,10 @@ class Api::V1::PiecesController < ApplicationController
         #byebug
         @piece = Piece.find(params["id"])
         @gallery = Gallery.find(@piece.gallery_id)
-        @piece.assign_attributes(piece_params)
+        @likes = @piece.likes
+        @likes = @likes + 1
+        @piece.update(likes: @likes )
+     
         render json: @gallery
     end
 
