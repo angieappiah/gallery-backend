@@ -27,7 +27,6 @@ class Api::V1::PiecesController < ApplicationController
         @likes = @piece.likes
         @likes = @likes + 1
         @piece.update(likes: @likes )
-     
         render json: @gallery
     end
 
